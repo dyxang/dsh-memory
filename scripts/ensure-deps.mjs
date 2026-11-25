@@ -6,7 +6,7 @@
  * does not install the linked package's own dependencies. `@deepseek-ai/
  * schemastery` is used at module load (`index.js` builds the Config schema), so
  * a missing copy means the plugin fails to import and never mounts — exactly the
- * "cannot resolve profile bundle @local/dsh-memory" failure this script
+ * "cannot resolve profile bundle @dyxang/dsh-memory" failure this script
  * prevents.
  *
  * The packages are committed under `vendor/`. This script copies any that are

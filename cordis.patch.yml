@@ -1,6 +1,6 @@
 - insert:
     - id: dsh-memory
-      name: '@local/dsh-memory'
+      name: '@dyxang/dsh-memory'
       config:
         enabled: true
         storageRoot: ''

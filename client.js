@@ -4,7 +4,7 @@
  * One surface, drawn here with the host's `--dsw-alias-*` theme tokens; no
  * Harness Client package is imported. The `dsh-memory` row's own page in the
  * Plugins manager is a single `plugins.row.config` entry keyed
- * `@local/dsh-memory#dsh-memory`, carrying two parts:
+ * `@dyxang/dsh-memory#dsh-memory`, carrying two parts:
  *
  *  1. The nine-field form editing the user-facing extraction fields of the
  *     `dsh-memory` Host entry. The page owner supplies `form.state` and
@@ -29,7 +29,7 @@
  */
 
 window.__ModuleLoader__.load({
-  id: '@local/dsh-memory',
+  id: '@dyxang/dsh-memory',
   factory(require) {
     const React = require('react');
     const { useCallback, useEffect, useRef, useState } = React;
@@ -53,7 +53,7 @@ window.__ModuleLoader__.load({
      * `plugins.row.config` is keyed `<package name>#<row id>`, so the key is
      * this joined with {@link CONFIG_NS}.
      */
-    const BUNDLE_NAME = '@local/dsh-memory';
+    const BUNDLE_NAME = '@dyxang/dsh-memory';
 
     /**
      * The nine editable fields, in render order. `kind` selects the control

@@ -3,7 +3,7 @@ description: "Installable profile layer adding file-based persistent agent memor
 kind: "package-bundle"
 ---
 
-# @local/dsh-memory
+# @dyxang/dsh-memory
 
 English | [中文](README.zh.md)
 
@@ -29,7 +29,7 @@ Adds persistent agent memory to any profile that lists it: one Markdown file per
 
 ```text
 dsh plugin --profile web add /absolute/path/to/dsh-memory
-dsh plugin --profile web remove @local/dsh-memory
+dsh plugin --profile web remove @dyxang/dsh-memory
 ```
 
 `dsh plugin` links the checkout and appends the bundle to `dsh.profile.bundles` because the manifest declares `dsh.bundle.patch`. A package without that declaration still installs, but only as a plain dependency: `dsh plugin` prints a warning and activates no layer. To relocate the directory, remove the bundle first, move it, then add the new absolute path — the profile junction is rewritten by the add, so no profile file is ever hand-edited.
@@ -59,7 +59,7 @@ One Loader row, `dsh-memory`, carrying the whole feature:
 
 ### The nine live fields
 
-Plugins → `@local/dsh-memory` → the `dsh-memory` row → configure opens a form for the nine fields marked `.volatile()` in `index.js`: `memoryWidth`, `extractionEnabled`, `minUserChars`, `minCjkChars`, `extractionMinTurns`, `extractionMinSteps`, `includeSubagents`, `recentBodiesInPrompt` and `model`. The page owner hands the card `form.state` and `form.mutate(operations, expectedRevision)`, so the card owns nothing but its staged drafts. A save writes the profile patch, survives a restart, and takes effect on the next turn — every field is read at its point of use, because a volatile-only change is committed into the running fiber without a remount.
+Plugins → `@dyxang/dsh-memory` → the `dsh-memory` row → configure opens a form for the nine fields marked `.volatile()` in `index.js`: `memoryWidth`, `extractionEnabled`, `minUserChars`, `minCjkChars`, `extractionMinTurns`, `extractionMinSteps`, `includeSubagents`, `recentBodiesInPrompt` and `model`. The page owner hands the card `form.state` and `form.mutate(operations, expectedRevision)`, so the card owns nothing but its staged drafts. A save writes the profile patch, survives a restart, and takes effect on the next turn — every field is read at its point of use, because a volatile-only change is committed into the running fiber without a remount.
 
 `memoryWidth` is the dial that keeps a long-lived project's memory from bloating: `extended` allows long bodies and lets one topic split across files, `balanced` — the default — is the behaviour this package had before the dial existed, and `slim` caps every extraction-written body at 800 characters, prefers folding a new fact into an existing file over opening a second one, and narrows the injected index budget while `indexLineLimit` / `indexCharLimit` sit on their defaults. The same dial carries the always-on layer's budget — 10 lines / 800 characters at `balanced` and `slim`, 20 / 1,600 at `extended` — which has no key of its own. The three options and the schema union are pinned together by `tests/config-schema.mjs`.
 
@@ -76,7 +76,7 @@ Plugins → `@local/dsh-memory` → the `dsh-memory` row → configure opens a f
 ```yaml
 - insert:
     - id: dsh-memory
-      name: '@local/dsh-memory'
+      name: '@dyxang/dsh-memory'
       config:
         enabled: true
         storageRoot: ''

@@ -3,7 +3,7 @@ description: "可安装的 profile 层，为 dsh --profile 界面增加文件型
 kind: "package-bundle"
 ---
 
-# @local/dsh-memory
+# @dyxang/dsh-memory
 
 English | [中文](README.zh.md)
 
@@ -29,7 +29,7 @@ English | [中文](README.zh.md)
 
 ```text
 dsh plugin --profile web add /absolute/path/to/dsh-memory
-dsh plugin --profile web remove @local/dsh-memory
+dsh plugin --profile web remove @dyxang/dsh-memory
 ```
 
 `dsh plugin` 会链接该 checkout，并因为 manifest 声明了 `dsh.bundle.patch` 而把 bundle 追加进 `dsh.profile.bundles`。没有该声明的包仍然装得上，但只是普通依赖：`dsh plugin` 会打印警告并且不激活任何层。要迁移目录，先 remove 再移动，然后用新的绝对路径 add——profile junction 由 add 重写，因此任何 profile 文件都不需要手改。
@@ -59,7 +59,7 @@ node scripts/ensure-deps.mjs
 
 ### The nine live fields
 
-插件管理 → `@local/dsh-memory` → `dsh-memory` 行 → 配置，打开的是 `index.js` 中标记 `.volatile()` 的九个字段的表单：`memoryWidth`、`extractionEnabled`、`minUserChars`、`minCjkChars`、`extractionMinTurns`、`extractionMinSteps`、`includeSubagents`、`recentBodiesInPrompt` 和 `model`。页面所有者把 `form.state` 和 `form.mutate(operations, expectedRevision)` 交给卡片，因此卡片除了暂存草稿之外不拥有任何状态。一次保存写入 profile patch、重启后仍在，并且在下一轮生效——每个字段都在使用点读取，因为 volatile-only 的变更会被直接提交进运行中的 fiber 而不重新挂载。
+插件管理 → `@dyxang/dsh-memory` → `dsh-memory` 行 → 配置，打开的是 `index.js` 中标记 `.volatile()` 的九个字段的表单：`memoryWidth`、`extractionEnabled`、`minUserChars`、`minCjkChars`、`extractionMinTurns`、`extractionMinSteps`、`includeSubagents`、`recentBodiesInPrompt` 和 `model`。页面所有者把 `form.state` 和 `form.mutate(operations, expectedRevision)` 交给卡片，因此卡片除了暂存草稿之外不拥有任何状态。一次保存写入 profile patch、重启后仍在，并且在下一轮生效——每个字段都在使用点读取，因为 volatile-only 的变更会被直接提交进运行中的 fiber 而不重新挂载。
 
 `memoryWidth` 是防止长期项目的记忆野蛮生长的旋钮：`extended` 允许长正文，也允许把一个主题拆成多个文件；`balanced`（默认）就是本插件在加入这个旋钮之前的行为；`slim` 把每条抽取写入的正文限制在 800 字符以内，优先把新事实并入已有文件而不是新开一个，并在 `indexLineLimit` / `indexCharLimit` 仍处于默认值时收窄注入索引的预算。同一个旋钮也决定常驻层的预算——`balanced` 与 `slim` 为 10 行 / 800 字符，`extended` 为 20 / 1,600——该项没有独立配置键。三个选项与 schema union 由 `tests/config-schema.mjs` 钉在一起。
 
@@ -76,7 +76,7 @@ node scripts/ensure-deps.mjs
 ```yaml
 - insert:
     - id: dsh-memory
-      name: '@local/dsh-memory'
+      name: '@dyxang/dsh-memory'
       config:
         enabled: true
         storageRoot: ''

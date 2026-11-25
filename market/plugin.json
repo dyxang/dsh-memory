@@ -1,0 +1,15 @@
+{
+  "name": "@dyxang/dsh-memory",
+  "title": { "en": "Memory", "zh": "记忆" },
+  "description": {
+    "en": "Persistent file-based agent memory: one Markdown file per fact, always-on rules plus an on-demand MEMORY.md index, automatic extraction, and a read-only audit.",
+    "zh": "文件型持久记忆：一条事实一个 Markdown 文件，常驻规则加按需 MEMORY.md 索引，自动抽取，以及只读审计。"
+  },
+  "author": "dyxang",
+  "homepage": "https://github.com/dyxang/dsh-memory",
+  "repository": { "url": "https://github.com/dyxang/dsh-memory" },
+  "icon": "https://raw.githubusercontent.com/dyxang/dsh-memory/main/icon.svg",
+  "category": "memory",
+  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "memory", "persistent-memory", "agent-memory"],
+  "engines": { "dsh": ">=0.2.2-rc.5" }
+}

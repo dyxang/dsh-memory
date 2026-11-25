@@ -15,6 +15,15 @@ runtime strings, on-disk format and the `memory` tool definition are unchanged.
   naming note to the prototype; it now just states the DSH naming mismatch and
   that it is cosmetic.
 
+### Packaging & market prep
+- `package.json` now carries `license`, `author`, `homepage`, `repository`,
+  `keywords` and `engines.dsh`; `market/plugin.json` holds the display metadata
+  and the intended public package name, and `npm run build:market`
+  (`scripts/build-market-index.mjs`) emits a format-1 DSH market index. The
+  build refuses a `private` or `@local/*` package, so this dev copy keeps both
+  and the release copy (public name, `private` removed) produces
+  `market/index.json`.
+
 ### Verified
 - Comment-stripped source of all 26 `src/` + `host/` modules is byte-identical
   to 0.3.0, confirming only comments and docs changed.
@@ -85,7 +94,7 @@ format are unchanged; existing data reads as-is.
 - **`vendor/` + `scripts/ensure-deps.mjs`.** The runtime dependency tree is
   committed under `vendor/` and materialized idempotently, so a copied plugin no
   longer fails to import `@deepseek-ai/schemastery` (the "cannot resolve profile
-  bundle @local/dsh-memory" failure).
+  bundle" failure).
 - **Tests.** `node --test` suite covering atomic writes, lock serialization,
   concurrent index maintenance, `forget` semantics, search caps and index
   reconciliation.
