@@ -14,6 +14,10 @@ runtime strings, on-disk format and the `memory` tool definition are unchanged.
 - **README "Known Limitations"** no longer attributes the `Write`-vs-`write`
   naming note to the prototype; it now just states the DSH naming mismatch and
   that it is cosmetic.
+- **README rewritten for direct prose**, and its test facts corrected: five
+  suites run with `node --test`, and the references to the deleted
+  `tests/config-schema.mjs` were replaced with the real `Config` schema and
+  `ensure-deps --check`.
 
 ### Packaging & market prep
 - `package.json` now carries `license`, `author`, `homepage`, `repository`,
