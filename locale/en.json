@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Memory",
+    "description": "File-based persistent agent memory: one Markdown file per fact, a MEMORY.md index injected every turn, and automatic extraction after each turn.",
+    "detail": "README.md"
+  }
+}

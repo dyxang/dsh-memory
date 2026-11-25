@@ -1,0 +1,23 @@
+- insert:
+    - id: dsh-memory
+      name: '@local/dsh-memory'
+      config:
+        enabled: true
+        storageRoot: ''
+        extractionEnabled: true
+        injectRules: true
+        injectIndex: true
+        indexLineLimit: 200
+        indexCharLimit: 25000
+        minUserChars: 12
+        minCjkChars: 3
+        extractionMinTurns: 5
+        extractionMinSteps: 40
+        recentBodiesInPrompt: 20
+        extractionDebounceMs: 1500
+        drainTimeoutMs: 60000
+        includeSubagents: false
+        model: ''
+        allowMemoryWrites: true
+        memoryWidth: balanced
+        agentMemoryScopes: {}

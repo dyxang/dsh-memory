@@ -1,0 +1,49 @@
+{
+  "name": "@local/dsh-memory",
+  "version": "0.3.1",
+  "description": "File-based persistent agent memory: one Markdown file per fact, an always-on rule layer plus an on-demand index injected into every prompt, and automatic extraction after each turn.",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "src",
+    "host",
+    "scripts",
+    "vendor",
+    "icon.svg",
+    "locale",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md"
+  ],
+  "icon": "./icon.svg",
+  "meta": {
+    "title": "Memory",
+    "description": "File-based persistent agent memory: one Markdown file per fact, an always-on rule layer plus an on-demand index injected into every prompt, and automatic extraction after each turn."
+  },
+  "scripts": {
+    "ensure-deps": "node scripts/ensure-deps.mjs",
+    "check-deps": "node scripts/ensure-deps.mjs --check",
+    "postinstall": "node scripts/ensure-deps.mjs",
+    "prepare": "node scripts/ensure-deps.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.4"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": ["@deepseek-ai/dsh-client-ui-settings"]
+    }
+  }
+}

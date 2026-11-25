@@ -1,0 +1,7 @@
+# Runtime deps are materialized by scripts/ensure-deps.mjs from vendor/
+node_modules/
+# Plugin's own runtime state
+.dsh-memory-state/
+*.log
+npm-debug.log*
+.DS_Store

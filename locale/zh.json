@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "记忆",
+    "description": "文件型持久记忆：一条记忆一个 Markdown 文件，MEMORY.md 索引每轮注入上下文，每轮结束后自动抽取落盘。",
+    "detail": "README.zh.md"
+  }
+}
